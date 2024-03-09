@@ -1,0 +1,44 @@
+@model List<S18_compito.Models.Booking>
+
+@{
+    ViewBag.Title = "Elenco Prenotazioni";
+}
+
+<h2>Elenco Prenotazioni</h2>
+
+<table class="table">
+    <tr>
+        <th>ID Cliente</th>
+        <th>Nome Cliente</th>
+        <th>Cognome Cliente</th>
+        <th>ID Stanza</th>
+        <th>Anno</th>
+        <th>Numero Prenotazione</th>
+        <th>Data Prenotazione</th>
+        <th>Check-In</th>
+        <th>Check-Out</th>
+        <th>Caparra</th>
+        <th>Tariffa</th>
+        <th>Pensione Omezza</th>
+        <th>Colazione</th>
+    </tr>
+
+    @foreach (var booking in Model)
+    {
+        <tr>
+            <td>@booking.IDCliente</td>
+            <td>@booking.Nome</td>
+            <td>@booking.Cognome</td>
+            <td>@booking.IDStanza</td>
+            <td>@booking.Anno</td>
+            <td>@booking.NumeroPrenotazione</td>
+            <td>@booking.DataPrenotazione.ToShortDateString()</td>
+            <td>@booking.CheckIn.ToShortDateString()</td>
+            <td>@booking.CheckOut.ToShortDateString()</td>
+            <td>@booking.Caparra</td>
+            <td>@booking.Tariffa</td>
+            <td>@(booking.PensioneOmezza ? "Pensione Completa" : "Mezza Pensione")</td>
+            <td>@(booking.Colazione ? "SI" : "NO")</td>
+        </tr>
+    }
+</table>

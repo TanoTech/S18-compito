@@ -1,7 +1,7 @@
-﻿using System;
+﻿using S18_compito.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Web.Mvc;
 
 namespace S18_compito.Controllers
@@ -10,21 +10,37 @@ namespace S18_compito.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            List<Rooms> rooms = GetRooms();
+            return View(rooms);
         }
 
-        public ActionResult About()
+        private List<Rooms> GetRooms()
         {
-            ViewBag.Message = "Your application description page.";
+            string connect= ConfigurationManager.ConnectionStrings["DB"].ToString();
+            List<Rooms> rooms = new List<Rooms>();
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            using (SqlConnection conn = new SqlConnection(connect))
+            {
+                conn.Open();
+                using (SqlCommand c = new SqlCommand(@"SELECT * FROM Rooms", conn))
+                {
+                    using (SqlDataReader r = c.ExecuteReader())
+                    {
+                        if (r.HasRows)
+                        {
+                            while (r.Read())
+                            {
+                                Rooms room = new Rooms();
+                                room.Number = (int)r["Number"];
+                                room.Descrizione = (string)r["Descrizione"];
+                                room.SingolaDoppia = (bool)r["SingolaDoppia"];
+                                rooms.Add(room);
+                            }
+                        }
+                    }
+                }
+            }
+            return rooms;
         }
     }
 }

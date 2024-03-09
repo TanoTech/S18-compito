@@ -1,0 +1,28 @@
+@model S18_compito.Models.Customers
+
+<h1>Aggiungi Cliente</h1>
+@using (Html.BeginForm("AddCustomer", "Booking"))
+{
+    @Html.ValidationSummary(true) <div>
+        @Html.LabelFor(m => m.Nome) @Html.TextBoxFor(m => m.Nome) <br />
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Cognome) @Html.TextBoxFor(m => m.Cognome) <br />
+    </div>
+    <div>
+        @Html.LabelFor(m => m.CF) @Html.TextBoxFor(m => m.CF) <br />
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Città) @Html.TextBoxFor(m => m.Città) <br />
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Provincia) @Html.TextBoxFor(m => m.Provincia) <br />
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Email) @Html.TextBoxFor(m => m.Email) <br />
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Tel) @Html.TextBoxFor(m => m.Tel) <br />
+    </div>
+    <input type="submit" value="Aggiungi Cliente" />
+}
