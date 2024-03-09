@@ -1,0 +1,41 @@
+@model S18_compito.Models.Booking
+
+@{
+    ViewBag.Title = "Dettagli Prenotazione";
+}
+
+<h2>Dettagli Prenotazione</h2>
+
+<table class="table">
+    <tr>
+        <th>ID Cliente</th>
+        <th>Nome Cliente</th>
+        <th>Cognome Cliente</th>
+        <th>ID Stanza</th>
+        <th>Anno</th>
+        <th>Numero Prenotazione</th>
+        <th>Data Prenotazione</th>
+        <th>Check-In</th>
+        <th>Check-Out</th>
+        <th>Caparra</th>
+        <th>Tariffa</th>
+        <th>Pensione Omezza</th>
+        <th>Colazione</th>
+    </tr>
+
+    <tr>
+        <td>@Model.IDCliente</td>
+        <td>@Model.Nome</td>
+        <td>@Model.Cognome</td>
+        <td>@Model.IDStanza</td>
+        <td>@Model.Anno</td>
+        <td>@Model.NumeroPrenotazione</td>
+        <td>@Model.DataPrenotazione.ToShortDateString()</td>
+        <td>@Model.CheckIn.ToShortDateString()</td>
+        <td>@Model.CheckOut.ToShortDateString()</td>
+        <td>@Model.Caparra</td>
+        <td>@Model.Tariffa</td>
+        <td>@(Model.PensioneOmezza ? "Pensione Completa" : "Mezza Pensione")</td>
+        <td>@(Model.Colazione ? "SI" : "NO")</td>
+    </tr>
+</table>

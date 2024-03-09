@@ -1,0 +1,29 @@
+@model List<S18_compito.Models.Customers>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Codice fiscale</th>
+            <th>Città</th>
+            <th>Provincia</th>
+            <th>Email</th>
+            <th>Telefono</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Nome</td>
+                <td>@c.Cognome</td>
+                <td>@c.CF</td>
+                <td>@c.Città</td>
+                <td>@c.Provincia</td>
+                <td>@c.Email</td>
+                <td>@c.Tel</td>
+            </tr>
+        }
+    </tbody>
+</table>

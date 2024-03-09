@@ -19,8 +19,19 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Informazioni", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contatto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Prenotazione", "Index", "Booking", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Clienti", "Index", "Customers", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Servizi Aggiuntivi", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+                <ul class="navbar-nav">
+                    @if (Request.Cookies[".ASPXAUTH"] == null)
+                    {
+                        <li>@Html.ActionLink("Login", "Index", "Login", new { area = "" }, new { @class = "nav-link btn btn-primary" })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "nav-link btn btn-danger" })</li>
+                    }
                 </ul>
             </div>
         </div>
