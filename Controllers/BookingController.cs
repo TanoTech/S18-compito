@@ -147,7 +147,7 @@ INNER JOIN Customers ON Booking.IDCliente = Customers.ID
             return View(b);
         }
 
-        public ActionResult Detail(int id)
+        public ActionResult Details(int id)
         {
             Booking booking = GetBookingById(id);
 
